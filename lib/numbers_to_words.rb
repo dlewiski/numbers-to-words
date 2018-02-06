@@ -11,13 +11,13 @@ class Numerical
     digits_array = @digit.to_s.chars.map(&:to_i)
 
     reversed_digits_array = digits_array.reverse()
-    binding.pry
+
     if (digits_array.length == 1) || (digits_array[1] == 1)
       single_digits.fetch(@digit)
 
     elsif digits_array.length == 2
-      first_digit = digits_array[1]
-      second_digit = digits_array[0]
+      first_digit = reversed_digits_array[0]
+      second_digit = reversed_digits_array[1]
       first_digit = single_digits.fetch(first_digit)
       second_digit = double_digits.fetch(second_digit)
 
@@ -29,10 +29,10 @@ class Numerical
 
       end
 
-    else digits_array.length == 3
-      first_digit = digits_array[2]
-      second_digit = digits_array[1]
-      third_digit = digits_array[0]
+    elsif digits_array.length == 3
+      first_digit = reversed_digits_array[0]
+      second_digit = reversed_digits_array[1]
+      third_digit = reversed_digits_array[2]
       first_digit = single_digits.fetch(first_digit)
       second_digit = double_digits.fetch(second_digit)
       third_digit = single_digits.fetch(third_digit)
@@ -48,6 +48,32 @@ class Numerical
 
       end
 
+    else digits_array.length == 4
+      first_digit = reversed_digits_array[0]
+      second_digit = reversed_digits_array[1]
+      third_digit = reversed_digits_array[2]
+      fourth_digit = @digit/1000
+      first_digit = single_digits.fetch(first_digit)
+      second_digit = double_digits.fetch(second_digit)
+      third_digit = single_digits.fetch(third_digit)
+      fourth_digit = single_digits.fetch(fourth_digit)
+
+      if first_digit == "zero" && second_digit == "zero" && third_digit == "zero"
+        fourth_digit + " " + "thousand"
+
+      elsif first_digit == "zero" && second_digit == "zero"
+        fourth_digit + " " + "thousand" + " " + third_digit + " " + "hundred"
+
+      elsif first_digit == "zero" && third_digit == "zero"
+        fourth_digit + " " + "thousand" + " " + second_digit
+
+      elsif first_digit == "zero"
+        fourth_digit + " " + "thousand" + " " + third_digit + " " + "hundred" + " " + second_digit
+
+      else
+        fourth_digit + " " + "thousand" + " " + third_digit + " " + "hundred" + " " + second_digit + " " + first_digit
+
+      end
     end
   end
 end

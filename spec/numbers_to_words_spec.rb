@@ -33,4 +33,9 @@ describe('numbers_to_words') do
     expect(number3.numbers_to_words()).to(eq("two hundred"))
   end
 
+  it("return the word version of any four digit number and removing 'zero' when not needed") do
+    number3 = Numerical.new(1020)
+    expect(number3.numbers_to_words()).to(eq("one thousand twenty"))
+  end
+
 end
