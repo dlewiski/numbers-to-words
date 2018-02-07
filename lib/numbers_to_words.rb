@@ -48,7 +48,7 @@ class Numerical
 
       end
 
-    else digits_array.length == 4
+    elsif digits_array.length == 4 || digits_array.length == 5
       first_digit = reversed_digits_array[0]
       second_digit = reversed_digits_array[1]
       third_digit = reversed_digits_array[2]
@@ -85,6 +85,44 @@ class Numerical
         fourth_digit + " " + "thousand" + " " + third_digit + " " + "hundred" + " " + second_digit + " " + first_digit
 
       end
+
+    # else digits_array.length == 4
+    #   first_digit = reversed_digits_array[0]
+    #   second_digit = reversed_digits_array[1]
+    #   third_digit = reversed_digits_array[2]
+    #
+    #   first_digit = single_digits.fetch(first_digit)
+    #   second_digit = double_digits.fetch(second_digit)
+    #   third_digit = single_digits.fetch(third_digit)
+    #   fourth_digit = @digit/1000
+    #     if reversed_digits_array[3] == 0
+    #       fourth_digit = double_digits.fetch(fourth_digit/10)
+    #
+    #     elsif fourth_digit < 20
+    #       fourth_digit = single_digits.fetch(fourth_digit)
+    #     else
+    #       first_fourth_digit = double_digits.fetch(fourth_digit/10)
+    #       second_fourth_digit = single_digits.fetch(fourth_digit % 10)
+    #       fourth_digit = first_fourth_digit + " " + second_fourth_digit
+    #     end
+    #
+    #
+    #   if first_digit == "zero" && second_digit == "zero" && third_digit == "zero"
+    #     fourth_digit + " " + "thousand"
+    #
+    #   elsif first_digit == "zero" && second_digit == "zero"
+    #     fourth_digit + " " + "thousand" + " " + third_digit + " " + "hundred"
+    #
+    #   elsif first_digit == "zero" && third_digit == "zero"
+    #     fourth_digit + " " + "thousand" + " " + second_digit
+    #
+    #   elsif first_digit == "zero"
+    #     fourth_digit + " " + "thousand" + " " + third_digit + " " + "hundred" + " " + second_digit
+    #
+    #   else
+    #     fourth_digit + " " + "thousand" + " " + third_digit + " " + "hundred" + " " + second_digit + " " + first_digit
+    #
+    #   end
     end
   end
 end
