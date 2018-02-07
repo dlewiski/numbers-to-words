@@ -12,7 +12,7 @@ class Numerical
 
     reversed_digits_array = digits_array.reverse()
 
-    if (digits_array.length == 1) || (digits_array[1] == 1)
+    if (reversed_digits_array.length == 1) || (reversed_digits_array[1] == 1)
       single_digits.fetch(@digit)
 
     elsif digits_array.length == 2
@@ -52,11 +52,22 @@ class Numerical
       first_digit = reversed_digits_array[0]
       second_digit = reversed_digits_array[1]
       third_digit = reversed_digits_array[2]
-      fourth_digit = @digit/1000
+
       first_digit = single_digits.fetch(first_digit)
       second_digit = double_digits.fetch(second_digit)
       third_digit = single_digits.fetch(third_digit)
-      fourth_digit = single_digits.fetch(fourth_digit)
+      fourth_digit = @digit/1000
+        if reversed_digits_array[3] == 0
+          fourth_digit = double_digits.fetch(fourth_digit/10)
+
+        elsif fourth_digit < 20
+          fourth_digit = single_digits.fetch(fourth_digit)
+        else
+          first_fourth_digit = double_digits.fetch(fourth_digit/10)
+          second_fourth_digit = single_digits.fetch(fourth_digit % 10)
+          fourth_digit = first_fourth_digit + " " + second_fourth_digit
+        end
+
 
       if first_digit == "zero" && second_digit == "zero" && third_digit == "zero"
         fourth_digit + " " + "thousand"

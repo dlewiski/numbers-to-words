@@ -38,4 +38,14 @@ describe('numbers_to_words') do
     expect(number3.numbers_to_words()).to(eq("one thousand twenty"))
   end
 
+  it("return the word version of any five digit number and removing 'zero' when not needed") do
+    number3 = Numerical.new(91020)
+    expect(number3.numbers_to_words()).to(eq("ninety one thousand twenty"))
+  end
+
+  it("return the word version of any five digit number and removing all'zero' when not needed") do
+    number3 = Numerical.new(90000)
+    expect(number3.numbers_to_words()).to(eq("ninety thousand"))
+  end
+
 end
